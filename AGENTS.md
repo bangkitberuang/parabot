@@ -7,3 +7,10 @@ This version has breaking changes — APIs, conventions, and file structure may 
 This block is written and re-added by `next dev` — verify at `node_modules/next/dist/server/lib/generate-agent-files.js`. Removing it from a diff only re-creates the uncommitted change; committing it with your work keeps the tree clean.
 
 <!-- END:nextjs-agent-rules -->
+
+## Git & Backup Policy
+- Selalu commit dan push setiap perubahan berkas ke GitHub sebagai upaya backup berkala.
+- Identitas Git: `bangkitberuang <bangkitberuang@gmail.com>`.
+- Target Remote: `https://github.com/bangkitberuang/parabot.git`.
+- Berkas kredensial rahasia (`.env.local`) harus selalu diproteksi dan dikecualikan via `.gitignore`.
+- Jalankan skrip `.\backup.ps1 "<pesan>"` setelah perubahan penting selesai dikerjakan.
