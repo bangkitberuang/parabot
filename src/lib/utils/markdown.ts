@@ -55,3 +55,36 @@ export function renderMarkdown(markdown: string | null | undefined): string {
     },
   });
 }
+
+/**
+ * Membersihkan format Markdown menjadi teks polos untuk ringkasan kartu dan meta tag SEO
+ */
+export function stripMarkdown(markdown: string | null | undefined): string {
+  if (!markdown) return '';
+  return markdown
+    .replace(/^#{1,6}\s+/gm, '') // Hapus header #
+    .replace(/(\*\*|__)(.*?)\1/g, '$2') // Hapus bold
+    .replace(/(\*|_)(.*?)\1/g, '$2') // Hapus italic
+    .replace(/`([^`]+)`/g, '$1') // Hapus inline code
+    .replace(/```[\s\S]*?```/g, '') // Hapus code block
+    .replace(/\[([^\]]+)\]\([^)]+\)/g, '$1') // Hapus link [teks](url) -> teks
+    .replace(/^\s*[-*+]\s+/gm, '') // Hapus bullet list
+    .replace(/^\s*\d+\.\s+/gm, '') // Hapus numbered list
+    .replace(/\n+/g, ' ') // Ganti newline dengan spasi
+    .trim();
+}
+
+/**
+ * Validasi apakah teks konten memiliki substansi nyata, bukan placeholder seperti 'WAIT..', 'TBD', '-'
+ */
+export function isMeaningfulContent(text: string | null | undefined): boolean {
+  if (!text) return false;
+  const trimmed = text.trim();
+  if (trimmed.length === 0) return false;
+  if (trimmed.length < 15) {
+    if (/^(wait\.{0,4}|tbd|todo|-|n\/a|belum ada|coming soon|dummy|test)$/i.test(trimmed)) {
+      return false;
+    }
+  }
+  return true;
+}

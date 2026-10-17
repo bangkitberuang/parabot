@@ -134,7 +134,7 @@ export async function POST(req: NextRequest) {
         .map((s: { url: string; keterangan?: string }, index: number) => ({
           karya_id: savedId,
           url: s.url,
-          keterangan: s.keterangan || (index === 0 ? 'desktop' : 'mobile'),
+          keterangan: s.keterangan || `Tangkapan Layar #${index + 1}`,
           urutan: index + 1,
         }));
 

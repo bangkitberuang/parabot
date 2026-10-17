@@ -134,7 +134,7 @@ export async function PUT(
         const rows = validScreenshots.map((s: { url: string; keterangan?: string }, index: number) => ({
           karya_id: id,
           url: s.url,
-          keterangan: s.keterangan || (index === 0 ? 'desktop' : 'mobile'),
+          keterangan: s.keterangan || `Tangkapan Layar #${index + 1}`,
           urutan: index + 1,
         }));
         // eslint-disable-next-line @typescript-eslint/no-explicit-any

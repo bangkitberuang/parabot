@@ -4,6 +4,7 @@ import React, { useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { ArrowRight, Globe, Download, Wrench, Code2, Smartphone } from 'lucide-react';
+import { stripMarkdown } from '@/lib/utils/markdown';
 
 interface KaryaCard {
   id: string;
@@ -221,7 +222,7 @@ export default function KatalogSection({
 
                     {/* Deskripsi min 15px & kontras tinggi */}
                     <p className="text-[15px] text-brand-neutral leading-relaxed mb-5 line-clamp-3">
-                      {item.deskripsi}
+                      {stripMarkdown(item.deskripsi)}
                     </p>
 
                     {/* Tags Teknologi */}

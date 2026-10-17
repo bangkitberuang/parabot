@@ -1,0 +1,225 @@
+[
+  {
+    "id": "a1000000-0000-0000-0000-000000000001",
+    "slug": "karsa-project-planner",
+    "nama": "KARSA",
+    "tagline": "Sistem Perencanaan & Pelacak Alur Proyek Terstruktur",
+    "jenis": "web",
+    "kategori_id": "c1000000-0000-0000-0000-000000000001",
+    "kategori_nama": "Produktivitas & Alur Proyek",
+    "kategori_slug": "produktivitas",
+    "deskripsi": "### Ringkasan & Nilai Produk\n**KARSA** adalah ruang kolaborasi teknis untuk menyusun *roadmap sprint*, integrasi modul backlog, serta timeline eksekusi program kedinasan secara terstruktur dan transparan.\n\n### Fitur Utama\n- **Kanban Board Multi-Divisi**: Kelola alur tugas mulai dari *Backlog*, *In Progress*, hingga *Completed* secara dinamis.\n- **Sprint Planning & Pelacakan Target**: Estimasi bobot kerja dan pemantauan *milestone* secara *real-time*.\n- **Ekspor Laporan Otomatis**: Buat rangkuman capaian berkala dalam format PDF/Excel siap serah-terima pimpinan.\n- **Otentikasi & Hak Akses Berjenjang**: Pembagian peran (*Role-Based Access Control*) untuk menjaga integritas data program.",
+    "cara_penggunaan": "1. Masuk ke aplikasi melalui tautan web utama.\n2. Buat papan proyek baru atau pilih divisi yang bersangkutan.\n3. Tambahkan tugas dan atur jadwal penanggung jawab sprint.",
+    "url_utama": "https://karsa.kitt.lt/",
+    "url_repositori": "https://github.com/bangkitberuang/karsa",
+    "versi": "v1.4.0",
+    "platform": "Web (Cloud)",
+    "ikon_url": "/icons/karsa.svg",
+    "status": "published",
+    "unggulan": true,
+    "urutan": 1,
+    "teknologi": ["Next.js", "TypeScript", "Tailwind CSS", "Supabase"],
+    "tanggal_rilis": "2026-01-15",
+    "diperbarui_pada": "2026-10-15T10:00:00.000Z",
+    "screenshots": [
+      {
+        "id": "1",
+        "url": "/mockups/karsa-desktop.png",
+        "keterangan": "Tampilan Dasbor Manajemen Proyek",
+        "urutan": 1
+      },
+      {
+        "id": "2",
+        "url": "/mockups/karsa-mobile.png",
+        "keterangan": "Tampilan Responsif Mobile",
+        "urutan": 2
+      }
+    ],
+    "unduhan": []
+  },
+  {
+    "id": "a1000000-0000-0000-0000-000000000002",
+    "slug": "galur",
+    "nama": "GALUR",
+    "tagline": "Garis Alur, Ngajentrekeun Struktur",
+    "jenis": "unduhan",
+    "kategori_id": "c1000000-0000-0000-0000-000000000001",
+    "kategori_nama": "Produktivitas & Visualisasi",
+    "kategori_slug": "produktivitas",
+    "deskripsi": "### Ringkasan & Nilai Produk\n**GALUR** (*Garis Alur, Ngajentrekeun Struktur*) adalah platform perancangan diagram alir (*flowchart*), topologi arsitektur sistem, dan pemetaan pikiran (*mind mapping*) interaktif berbasis web dan desktop. Diciptakan khusus untuk mempermudah penyusunan SOP birokrasi, rancang bangun rekayasa sistem, dan visualisasi proses kerja yang presisi tanpa ketergantungan lisensi komersial mahal.\n\n### Fitur Utama\n\n#### 1. Ketepatan Ala Visio (Flowchart & Architecture)\n- **Stencil Bentuk Bawaan Lengkap**: Kotak Proses, Belah Ketupat Keputusan (*Decision IF*), Mulai/Selesai (*Terminator*), Basis Data (*Database*), Layanan Cloud, Catatan Tempel, dan Teks Bebas.\n- **4 Titik Sambungan Magnetik**: Posisi Atas, Bawah, Kiri, dan Kanan otomatis terhubung presisi pada setiap objek.\n- **Pilihan Gaya Konektor Fleksibel**: Siku-siku Patah (*Visio Standard Orthogonal*), Melengkung Halus (*Bezier Curve*), dan Garis Lurus (*Straight Line*).\n- **Drag-and-Drop Kanvas Instan**: Tarik bentuk dari bilah samping langsung ke bidang kerja kanvas.\n\n#### 2. Mind Mapping Interaktif\n- **Ekspansi Cabang Kilat**: Tambah anak cabang ide baru secara instan cukup dengan satu klik tombol `+` pada node.\n- **Navigasi Dinamis**: Dukungan *infinite canvas*, fungsi *zoom in/out*, dan *panning* bebas hambatan.\n- Tata letak rapi, visual modern, dan sangat nyaman untuk sesi curah gagasan (*brainstorming*).\n\n#### 3. Cetak & Ekspor Fleksibel\n- **Ekspor Dokumen PDF**: Format standar A4 dengan pilihan orientasi *Landscape* maupun *Portrait*.\n- **Ekspor Gambar Resolusi Tinggi**: Pilihan berkas PNG transparan dan JPG tajam (skala 2x & 3x) siap pakai untuk dokumen laporan kedinasan.\n- **Cetak Fisik Langsung**: Terintegrasi tombol cetak dengan CSS cetak khusus (`@media print`) yang otomatis menyembunyikan panel alat navigasi.\n\n#### 4. Kolaborasi & Multi-User Aman (Supabase Auth)\n- **Otentikasi Mandiri**: Dukungan masuk (*login*) menggunakan akun Google pribadi atau instansi.\n- **Isolasi Data Terenkripsi**: Menggunakan *Row Level Security* (RLS) PostgreSQL; setiap pranata atau pengguna hanya berhak mengakses diagram miliknya sendiri.\n- **Mode Offline**: Tetap dapat bekerja saat luring (tanpa koneksi internet) menggunakan penyimpanan lokal peramban (*LocalStorage*).",
+    "cara_penggunaan": "1. **Buka Kanvas Kerja**: Akses GALUR melalui peramban web di https://galur.kitt.lt atau pasang versi desktop installer.\n2. **Rancang Diagram**: Tarik bentuk dari pustaka stencil di bilah kiri, sambungkan konektor alur antar-titik magnetik, dan beri label penjelasan.\n3. **Simpan & Ekspor**: Simpan proyek ke penyimpanan awan Supabase atau unduh langsung dalam format PDF siap cetak maupun berkas gambar HD.",
+    "url_utama": "https://galur.kitt.lt/",
+    "url_repositori": "https://github.com/bangkitberuang/galur",
+    "versi": "v2.1.0",
+    "platform": "Windows & Web",
+    "ikon_url": "/icons/rantang.svg",
+    "status": "published",
+    "unggulan": true,
+    "urutan": 2,
+    "teknologi": ["Next.js", "React Flow", "Supabase", "TypeScript", "Tailwind CSS"],
+    "tanggal_rilis": "2026-02-10",
+    "diperbarui_pada": "2026-10-17T16:17:21.000Z",
+    "screenshots": [
+      {
+        "id": "b14d2b5e-c0cc-4466-8328-8f83eab37a30",
+        "url": "https://yoddmcupzwjjmyonzaas.supabase.co/storage/v1/object/public/aset-parabot/karya/1792253689483-3nhgmi.png",
+        "urutan": 1,
+        "keterangan": "Tampilan Kanvas Kerja Flowchart & Mind Mapping"
+      },
+      {
+        "id": "4ee988aa-a3d9-4952-9989-396b1faf87bb",
+        "url": "https://yoddmcupzwjjmyonzaas.supabase.co/storage/v1/object/public/aset-parabot/karya/1792253830561-d571u4.png",
+        "urutan": 2,
+        "keterangan": "Katalog Stencil & Komponen Diagram Lengkap"
+      },
+      {
+        "id": "d414239c-1b23-49d5-8e5a-1bd16d11af93",
+        "url": "https://yoddmcupzwjjmyonzaas.supabase.co/storage/v1/object/public/aset-parabot/karya/1792253831159-04c2f1.png",
+        "urutan": 3,
+        "keterangan": "Pilihan Ekspor PDF & Cetak Langsung"
+      },
+      {
+        "id": "896b5b95-142a-4683-bc0d-e4b986d6e9aa",
+        "url": "https://yoddmcupzwjjmyonzaas.supabase.co/storage/v1/object/public/aset-parabot/karya/1792253830920-4hgz03.png",
+        "urutan": 4,
+        "keterangan": "Panel Konfigurasi Gaya Konektor & Bentuk"
+      }
+    ],
+    "unduhan": [
+      {
+        "id": "a2000000-0000-0000-0000-000000000001",
+        "label": "GALUR Desktop Installer v2.1.0 (Windows x64)",
+        "platform": "windows",
+        "url_drive": "https://github.com/bangkitberuang/galur/releases",
+        "jumlah_klik": 14,
+        "ukuran_teks": "64 MB",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "id": "a2000000-0000-0000-0000-000000000002",
+        "label": "Buku Panduan Instalasi & Format Berkas PDF",
+        "platform": "berkas",
+        "url_drive": "https://github.com/bangkitberuang/galur/releases",
+        "jumlah_klik": 8,
+        "ukuran_teks": "1.8 MB",
+        "sha256": "4b227777d4dd1fc61c6f884f48641d02b4d121d3fd328cb08b5531fcacdabf8a"
+      }
+    ]
+  },
+  {
+    "id": "a1000000-0000-0000-0000-000000000003",
+    "slug": "sawala-sentimen-warga",
+    "nama": "SAWALA",
+    "tagline": "Platform Monitoring Sentimen & Aspirasi Publik",
+    "jenis": "mobile",
+    "kategori_id": "c1000000-0000-0000-0000-000000000003",
+    "kategori_nama": "Komunikasi & Rekayasa DIY",
+    "kategori_slug": "komunikasi-diy",
+    "deskripsi": "### Ringkasan & Nilai Produk\n**SAWALA** adalah mesin analitik agregasi keluhan dan aspirasi warga dari ragam kanal sosial untuk rekomendasi respons kebijakan humas pemerintah yang terukur dan tepat sasaran.\n\n### Fitur Utama\n- **Agregator Umpan Balik Multi-Kanal**: Menghubungkan aspirasi publik dari form aduan, media sosial, dan data tabular berkala.\n- **Analitik Sentimen Otomatis**: Klasifikasi otomatis opini warga menjadi Positif, Netral, dan Perlu Penanganan Segera.\n- **Pusat Rekomendasi Narasi Humas**: Menyarankan poin klarifikasi dan respons yang sejuk serta berdasar data bagi pranata humas.",
+    "cara_penggunaan": "1. Hubungkan akun API sosial atau impor berkas CSV aduan publik.\n2. Pantau grafik polaritas sentimen pada dasbor utama.\n3. Ekspor lembar rekomendasi kebijakan langsung ke format PDF.",
+    "url_utama": "https://sawala.kitt.lt/",
+    "url_repositori": "https://github.com/bangkitberuang/sawala",
+    "versi": "v1.1.2",
+    "platform": "Web & Mobile",
+    "ikon_url": "/icons/sawala.svg",
+    "status": "published",
+    "unggulan": false,
+    "urutan": 3,
+    "teknologi": ["React Native", "Next.js", "Python FastText", "PostgreSQL"],
+    "tanggal_rilis": "2026-03-01",
+    "diperbarui_pada": "2026-10-12T14:30:00.000Z",
+    "screenshots": [
+      {
+        "id": "5",
+        "url": "/mockups/sawala-desktop.png",
+        "keterangan": "Dasbor Analitik Sentimen Publik",
+        "urutan": 1
+      },
+      {
+        "id": "6",
+        "url": "/mockups/sawala-mobile.png",
+        "keterangan": "Tampilan Aplikasi Mobile SAWALA",
+        "urutan": 2
+      }
+    ],
+    "unduhan": []
+  },
+  {
+    "id": "a1000000-0000-0000-0000-000000000004",
+    "slug": "diy-bot-notulensi-mandiri",
+    "nama": "Bot Notulensi Suara Rapat Otomatis (DIY)",
+    "tagline": "Panduan Merakit Sistem Transkripsi Rapat Mandiri & Privat",
+    "jenis": "diy",
+    "kategori_id": "c1000000-0000-0000-0000-000000000003",
+    "kategori_nama": "Komunikasi & Rekayasa DIY",
+    "kategori_slug": "komunikasi-diy",
+    "deskripsi": "### Ringkasan & Nilai Produk\nProyek rekayasa mandiri (DIY) untuk membangun alat perekam dan perangkum notulensi rapat otomatis berbasis kecerdasan artifisial lokal (*offline Whisper AI*). Solusi ini menjamin kerahasiaan data rapat kedinasan tanpa perlu mengirim rekaman suara ke server pihak ketiga luar negeri.\n\n### Keunggulan Desain Mandiri\n- **100% On-Premise & Privat**: Tidak ada transmisi suara ke cloud komersial asing.\n- **Pemisahan Pembicara (*Diarization*)**: Mampu mengenali pergantian suara peserta rapat.\n- **Rangkuman Eksekutif Otomatis**: Menghasilkan poin keputusan, *action item*, dan daftar hadir dalam format Markdown dan PDF.",
+    "cara_penggunaan": "1. Siapkan perangkat mikrofon USB dan PC dengan RAM minimal 16GB.\n2. Pasang library Python Whisper dan skrip automasi dari repositori.\n3. Jalankan bot saat rapat berlangsung dan tunggu ringkasan Markdown tersusun rapi.",
+    "url_utama": null,
+    "url_repositori": "https://github.com/bangkitberuang/diy-whisper-notulensi",
+    "versi": "v1.0.0",
+    "platform": "Python (Local)",
+    "ikon_url": "/icons/diy-mic.svg",
+    "status": "published",
+    "unggulan": false,
+    "urutan": 4,
+    "tingkat_kesulitan": "Menengah",
+    "estimasi_waktu": "2-3 Jam",
+    "bahan_alat": [
+      { "nama": "Mikrofon USB Omnidirectional", "keterangan": "Rekomendasi Jabra / Fifine" },
+      { "nama": "PC / Laptop Minimal RAM 16GB", "keterangan": "GPU NVIDIA opsional untuk akselerasi" },
+      { "nama": "Python 3.10+ & FFmpeg", "keterangan": "Runtime pendukung" }
+    ],
+    "teknologi": ["Python", "OpenAI Whisper", "PyAnnote", "Streamlit"],
+    "tanggal_rilis": "2026-03-20",
+    "diperbarui_pada": "2026-10-10T09:28:34.000Z",
+    "screenshots": [
+      {
+        "id": "7",
+        "url": "/mockups/diy-bot-desktop.png",
+        "keterangan": "Antarmuka Transkripsi Rapat Real-Time",
+        "urutan": 1
+      }
+    ],
+    "unduhan": []
+  },
+  {
+    "id": "a1000000-0000-0000-0000-000000000005",
+    "slug": "diy-iot-monitor-server",
+    "nama": "Monitor Suhu & Kelembapan Server Mandiri (DIY)",
+    "tagline": "Alat IoT Hemat Biaya Pemantau Fisik Ruang Komputer",
+    "jenis": "diy",
+    "kategori_id": "c1000000-0000-0000-0000-000000000003",
+    "kategori_nama": "Komunikasi & Rekayasa DIY",
+    "kategori_slug": "komunikasi-diy",
+    "deskripsi": "### Ringkasan & Nilai Produk\nPanduan merakit modul IoT mikrokontroler berbasis ESP32 dengan sensor suhu dan kelembapan presisi (DHT22/BME280) yang mengirimkan notifikasi peringatan dini otomatis ke Telegram atau WhatsApp saat pendingin AC ruang server mengalami lonjakan panas berbahaya.\n\n### Keunggulan Proyek\n- **Biaya Sangat Terjangkau**: Total komponen di bawah Rp 150.000 dibandingkan alat monitoring komersial jutaan rupiah.\n- **Peringatan Dini Cepat**: Mengirim sinyal bot Telegram dalam waktu kurang dari 3 detik saat suhu melampaui batas ambang aman.\n- **Dasbor Grafis Terintegrasi**: Dapat dipantau via browser jaringan lokal kantor.",
+    "cara_penggunaan": "1. Rangkai mikrokontroler ESP32 bersama modul sensor DHT22 pada breadboard.\n2. Flash kode program Arduino / MicroPython yang disediakan ke papan modul.\n3. Masukkan token bot Telegram Anda dan pasang alat di rak server.",
+    "url_utama": null,
+    "url_repositori": "https://github.com/bangkitberuang/esp32-server-temp-alert",
+    "versi": "v1.2.0",
+    "platform": "ESP32 Firmware",
+    "ikon_url": "/icons/diy-iot.svg",
+    "status": "published",
+    "unggulan": false,
+    "urutan": 5,
+    "tingkat_kesulitan": "Pemula",
+    "estimasi_waktu": "1 Jam",
+    "bahan_alat": [
+      { "nama": "NodeMCU ESP32 Board", "keterangan": "Mikrokontroler WiFi" },
+      { "nama": "Sensor Suhu & Kelembapan DHT22", "keterangan": "Akurasi tinggi" },
+      { "nama": "Kabel Micro USB & Breadboard", "keterangan": "Catu daya 5V" }
+    ],
+    "teknologi": ["ESP32", "C++ (Arduino)", "Telegram Bot API", "MQTT"],
+    "tanggal_rilis": "2026-04-05",
+    "diperbarui_pada": "2026-10-10T09:28:34.000Z",
+    "screenshots": [
+      {
+        "id": "9",
+        "url": "/mockups/diy-iot-desktop.png",
+        "keterangan": "Skema Rangkaian Elektronik & Dasbor Telegram",
+        "urutan": 1
+      }
+    ],
+    "unduhan": []
+  }
+]

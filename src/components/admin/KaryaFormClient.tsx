@@ -184,7 +184,7 @@ export default function KaryaFormClient({
 
         return {
           url: json.url as string,
-          keterangan: (formData.screenshots.length + fileIdx === 0) ? 'desktop' : 'mobile',
+          keterangan: `Tangkapan Layar #${formData.screenshots.length + fileIdx + 1}`,
         };
       });
 
