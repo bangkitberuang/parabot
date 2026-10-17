@@ -27,16 +27,16 @@ export default function Navbar({
   return (
     <nav className="relative z-50 max-w-7xl mx-auto px-6 py-5 flex items-center justify-between">
       <Link href="/" className="flex items-center gap-3 group">
-        <div className="w-11 h-11 rounded-xl bg-white/10 border border-brand-emerald/30 flex items-center justify-center text-brand-primary shadow-sm group-hover:scale-105 transition-transform overflow-hidden">
+        <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-2xl bg-white/10 border border-brand-emerald/30 p-1 flex items-center justify-center text-brand-primary shadow-sm group-hover:scale-105 transition-transform overflow-hidden flex-shrink-0">
           {activeLogo ? (
             // eslint-disable-next-line @next/next/no-img-element
             <img
               src={activeLogo}
               alt={brandName}
-              className="w-full h-full object-cover"
+              className="w-full h-full object-contain rounded-xl"
             />
           ) : (
-            <Code2 className="w-5 h-5 text-brand-primary" />
+            <Code2 className="w-6 h-6 text-brand-primary" />
           )}
         </div>
         <div>

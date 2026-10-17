@@ -42,14 +42,14 @@ export default function Footer({
 
       <div className="relative z-10 max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-4 gap-12">
         <div className="md:col-span-2">
-          <div className="flex items-center gap-3 mb-4">
-            <div className="w-10 h-10 rounded-xl bg-white/10 border border-brand-emerald/30 flex items-center justify-center overflow-hidden shadow-sm flex-shrink-0">
+          <div className="flex items-center gap-4 sm:gap-5 mb-5">
+            <div className="w-[120px] h-[120px] rounded-2xl bg-white/10 border border-white/20 p-1.5 flex items-center justify-center overflow-hidden shadow-xl flex-shrink-0">
               {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src="/logo.png" alt={brandName} className="w-full h-full object-cover" />
+              <img src="/logo.png" alt={brandName} className="w-full h-full object-contain rounded-xl" />
             </div>
             <div>
-              <span className="text-xl font-black text-white tracking-tight">{brandName}</span>
-              <span className="block text-[10px] uppercase font-bold tracking-widest text-emerald-400">Tatar Pasundan · Jawa Barat</span>
+              <span className="text-2xl sm:text-3xl font-black text-white tracking-tight">{brandName}</span>
+              <span className="block text-xs uppercase font-bold tracking-widest text-emerald-400 mt-1">Tatar Pasundan · Jawa Barat</span>
             </div>
           </div>
           <p className="text-sm text-slate-300 max-w-sm leading-relaxed mb-4">
