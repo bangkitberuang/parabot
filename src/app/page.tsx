@@ -128,7 +128,7 @@ export default async function HomePage() {
       {/* =========================================================================
           SATU STRIP ANGKA STATISTIK (Hanya Tampilkan Yang > 0)
           ========================================================================= */}
-      <section className="max-w-4xl mx-auto px-6 mt-16 mb-20">
+      <section className="max-w-4xl mx-auto px-6 mt-12 sm:mt-16 mb-6 sm:mb-8">
         <div className="bg-white rounded-2xl p-6 shadow-sm border border-brand-border flex flex-wrap items-center justify-around gap-6 text-center">
           {totalKaryaAktif > 0 && (
             <div className="px-4">

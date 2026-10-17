@@ -81,7 +81,7 @@ export default function KatalogSection({
   };
 
   return (
-    <section id="katalog" className="max-w-7xl mx-auto px-6 py-20">
+    <section id="katalog" className="max-w-7xl mx-auto px-6 pt-4 sm:pt-8 pb-20 scroll-mt-12">
       <div id="katalog-diy" className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
         <div>
           <span className="text-xs font-bold uppercase tracking-widest text-brand-spruce bg-brand-mint px-3.5 py-1.5 rounded-full border border-emerald-200">
