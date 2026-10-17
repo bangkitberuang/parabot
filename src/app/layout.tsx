@@ -34,7 +34,8 @@ export async function generateMetadata(): Promise<Metadata> {
       images: [{ url: ogImage }],
     },
     icons: {
-      icon: (pengaturan.favicon_url as string) || '/favicon.ico',
+      icon: (pengaturan.favicon_url as string) || '/icon.png',
+      apple: '/apple-icon.png',
     },
   };
 }

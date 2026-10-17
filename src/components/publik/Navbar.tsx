@@ -13,7 +13,7 @@ interface NavbarProps {
 export default function Navbar({
   brandName = 'PARABOT',
   brandTagline = 'Portofolio Karya Digital · Bangkit Beruang Dev',
-  logoUrl = '',
+  logoUrl = '/logo.png',
 }: NavbarProps) {
   // 3 Menu Sesuai Persyaratan: Beranda, Karya, Tentang
   const menuList = [
@@ -22,16 +22,18 @@ export default function Navbar({
     { label: 'Tentang', href: '/tentang' },
   ];
 
+  const activeLogo = logoUrl || '/logo.png';
+
   return (
     <nav className="relative z-50 max-w-7xl mx-auto px-6 py-5 flex items-center justify-between">
       <Link href="/" className="flex items-center gap-3 group">
-        <div className="w-10 h-10 rounded-xl bg-brand-primary/20 border border-brand-emerald/30 flex items-center justify-center text-brand-primary shadow-sm group-hover:scale-105 transition-transform overflow-hidden">
-          {logoUrl ? (
+        <div className="w-11 h-11 rounded-xl bg-white/10 border border-brand-emerald/30 flex items-center justify-center text-brand-primary shadow-sm group-hover:scale-105 transition-transform overflow-hidden">
+          {activeLogo ? (
             // eslint-disable-next-line @next/next/no-img-element
             <img
-              src={logoUrl}
+              src={activeLogo}
               alt={brandName}
-              className="w-full h-full object-contain p-1"
+              className="w-full h-full object-cover"
             />
           ) : (
             <Code2 className="w-5 h-5 text-brand-primary" />

@@ -43,8 +43,9 @@ export default function Footer({
       <div className="relative z-10 max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-4 gap-12">
         <div className="md:col-span-2">
           <div className="flex items-center gap-3 mb-4">
-            <div className="w-9 h-9 rounded-xl bg-brand-primary/20 border border-brand-emerald/30 flex items-center justify-center text-brand-primary font-bold">
-              <Code2 className="w-5 h-5 text-brand-primary" />
+            <div className="w-10 h-10 rounded-xl bg-white/10 border border-brand-emerald/30 flex items-center justify-center overflow-hidden shadow-sm flex-shrink-0">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img src="/logo.png" alt={brandName} className="w-full h-full object-cover" />
             </div>
             <div>
               <span className="text-xl font-black text-white tracking-tight">{brandName}</span>

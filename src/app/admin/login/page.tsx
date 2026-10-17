@@ -94,8 +94,9 @@ export default function AdminLoginPage() {
     <div className="min-h-screen bg-gradient-to-br from-[#032219] via-[#052E22] to-slate-900 flex items-center justify-center p-6 text-white">
       <div className="w-full max-w-md bg-white text-slate-800 rounded-3xl p-8 sm:p-10 shadow-2xl border border-slate-100">
         <div className="text-center mb-6">
-          <div className="w-12 h-12 mx-auto rounded-2xl bg-emerald-100 text-emerald-700 flex items-center justify-center font-black text-xl mb-4 shadow-sm">
-            <Lock className="w-6 h-6" />
+          <div className="w-16 h-16 mx-auto rounded-2xl bg-white border border-slate-100 flex items-center justify-center mb-4 shadow-md overflow-hidden p-1">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img src="/logo.png" alt="PARABOT" className="w-full h-full object-cover rounded-xl" />
           </div>
           <h1 className="text-2xl font-black text-slate-900 tracking-tight">
             Panel Kelola PARABOT

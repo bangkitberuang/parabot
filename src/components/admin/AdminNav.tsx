@@ -26,14 +26,19 @@ export default function AdminNav({ currentPath = '/admin' }: AdminNavProps) {
       <div>
         {/* Brand Header */}
         <div className="p-6 border-b border-slate-800 flex items-center justify-between">
-          <div>
-            <div className="flex items-center gap-2">
-              <span className="w-2.5 h-2.5 rounded-full bg-emerald-400"></span>
-              <span className="text-lg font-black text-white tracking-tight">PARABOT</span>
+          <div className="flex items-center gap-3">
+            <div className="w-9 h-9 rounded-xl bg-white/10 border border-slate-700 flex items-center justify-center overflow-hidden shadow-sm flex-shrink-0">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img src="/logo.png" alt="PARABOT" className="w-full h-full object-cover" />
             </div>
-            <span className="text-[10px] text-slate-500 uppercase tracking-widest font-bold">
-              Panel Kelola
-            </span>
+            <div>
+              <div className="flex items-center gap-1.5">
+                <span className="text-lg font-black text-white tracking-tight">PARABOT</span>
+              </div>
+              <span className="text-[10px] text-slate-500 uppercase tracking-widest font-bold">
+                Panel Kelola
+              </span>
+            </div>
           </div>
           <Link
             href="/"
