@@ -5,7 +5,30 @@ import { revalidatePath } from 'next/cache';
 
 // Helper slug generator
 function generateSlug(text: string): string {
-  return text
+  let clean = text.trim();
+
+  // Jika input berupa URL lengkap (misal: https://galur.kitt.lt atau https://domain/karya/galur)
+  if (/^https?:\/\//i.test(clean)) {
+    try {
+      const url = new URL(clean);
+      const segments = url.pathname.split('/').filter(Boolean);
+      if (segments.length > 0) {
+        clean = segments[segments.length - 1];
+      } else {
+        const hostParts = url.hostname.split('.');
+        clean = hostParts[0] === 'www' ? (hostParts[1] || 'karya') : hostParts[0];
+      }
+    } catch {
+      clean = clean.replace(/^https?:\/\//i, '');
+    }
+  }
+
+  // Jika terlanjur tersimpan pola https...kittlt
+  if (clean.startsWith('https') && clean.endsWith('kittlt')) {
+    clean = clean.replace(/^https/i, '').replace(/kittlt$/i, '');
+  }
+
+  return clean
     .toLowerCase()
     .replace(/[^\w\s-]/g, '')
     .trim()

@@ -65,10 +65,18 @@ export default function KaryaFormClient({
 }: KaryaFormProps) {
   const router = useRouter();
 
+  const sanitizeInitialSlug = (slug?: string) => {
+    if (!slug) return '';
+    if (slug.startsWith('https') && slug.endsWith('kittlt')) {
+      return slug.replace(/^https/i, '').replace(/kittlt$/i, '');
+    }
+    return slug;
+  };
+
   const [formData, setFormData] = useState<KaryaFormData>({
     id: initialData?.id || '',
     nama: initialData?.nama || '',
-    slug: initialData?.slug || '',
+    slug: sanitizeInitialSlug(initialData?.slug),
     tagline: initialData?.tagline || '',
     jenis: (initialData?.jenis as 'web' | 'mobile' | 'unduhan' | 'diy') || 'web',
     kategori_id: initialData?.kategori_id || '',
@@ -341,15 +349,41 @@ export default function KaryaFormClient({
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div>
                 <label className="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-2">
-                  Slug URL (Otomatis jika dikosongkan)
+                  Slug URL (Jalur Tautan di PARABOT)
                 </label>
-                <input
-                  type="text"
-                  value={formData.slug}
-                  onChange={(e) => handleChange('slug', e.target.value)}
-                  placeholder="karsa-arsip-humas"
-                  className="w-full px-4 py-2.5 rounded-xl border border-slate-200 text-xs font-mono focus:ring-2 focus:ring-emerald-500 focus:outline-none"
-                />
+                <div className="flex items-center">
+                  <span className="px-3 py-2.5 bg-slate-100 border border-r-0 border-slate-200 text-slate-500 text-xs rounded-l-xl font-mono select-none">
+                    /karya/
+                  </span>
+                  <input
+                    type="text"
+                    value={formData.slug}
+                    onChange={(e) => {
+                      let val = e.target.value.trim();
+                      if (/^https?:\/\//i.test(val)) {
+                        try {
+                          const url = new URL(val);
+                          const segs = url.pathname.split('/').filter(Boolean);
+                          val = segs.length > 0 ? segs[segs.length - 1] : url.hostname.split('.')[0];
+                        } catch {
+                          val = val.replace(/^https?:\/\//i, '');
+                        }
+                      }
+                      if (val.startsWith('https') && val.endsWith('kittlt')) {
+                        val = val.replace(/^https/i, '').replace(/kittlt$/i, '');
+                      }
+                      handleChange('slug', val);
+                    }}
+                    placeholder="galur"
+                    className="w-full px-4 py-2.5 rounded-r-xl border border-slate-200 text-xs font-mono focus:ring-2 focus:ring-emerald-500 focus:outline-none"
+                  />
+                </div>
+                <p className="text-[11px] text-slate-500 mt-1">
+                  URL Halaman: <code className="text-emerald-700 font-semibold font-mono">/karya/{formData.slug || 'nama-karya'}</code>
+                </p>
+                <p className="text-[11px] text-slate-400 mt-0.5">
+                  *Cukup masukkan kata pendek (misal: <strong>galur</strong>). Tautan situs web aplikasi dimasukkan di bagian <em>Tautan & Ekosistem</em> di bawah.
+                </p>
               </div>
 
               <div>
