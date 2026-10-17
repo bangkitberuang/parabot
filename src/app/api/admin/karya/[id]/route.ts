@@ -53,7 +53,7 @@ export async function PUT(
     const finalSlug = slug ? generateSlug(slug) : generateSlug(nama);
 
     // 1. Update data utama karya
-    const updatePayload = {
+    const updatePayload: Record<string, unknown> = {
       nama,
       slug: finalSlug,
       tagline: tagline || null,
@@ -77,11 +77,23 @@ export async function PUT(
     };
 
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    const { data: updatedKarya, error: updateError } = await (supabase.from('karya') as any)
+    let { data: updatedKarya, error: updateError } = await (supabase.from('karya') as any)
       .update(updatePayload)
       .eq('id', id)
       .select('id, slug')
       .single();
+
+    // Fallback otomatis jika kolom youtube_title belum ada di skema tabel Supabase
+    if (updateError && updateError.message?.includes('youtube_title')) {
+      delete updatePayload.youtube_title;
+      const retryResult = await (supabase.from('karya') as any)
+        .update(updatePayload)
+        .eq('id', id)
+        .select('id, slug')
+        .single();
+      updatedKarya = retryResult.data;
+      updateError = retryResult.error;
+    }
 
     if (updateError || !updatedKarya) {
       throw new Error(updateError?.message || 'Gagal memperbarui karya');

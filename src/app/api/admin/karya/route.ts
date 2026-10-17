@@ -57,7 +57,7 @@ export async function POST(req: NextRequest) {
     const finalSlug = slug ? generateSlug(slug) : generateSlug(nama);
 
     // 1. Simpan Karya ke tabel karya
-    const insertPayload = {
+    const insertPayload: Record<string, unknown> = {
       nama,
       slug: finalSlug,
       tagline: tagline || null,
@@ -81,10 +81,21 @@ export async function POST(req: NextRequest) {
     };
 
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    const { data: karyaData, error: karyaError } = await (supabase.from('karya') as any)
+    let { data: karyaData, error: karyaError } = await (supabase.from('karya') as any)
       .insert(insertPayload)
       .select('id, slug')
       .single();
+
+    // Fallback otomatis jika kolom youtube_title belum ada di skema tabel Supabase
+    if (karyaError && karyaError.message?.includes('youtube_title')) {
+      delete insertPayload.youtube_title;
+      const retryResult = await (supabase.from('karya') as any)
+        .insert(insertPayload)
+        .select('id, slug')
+        .single();
+      karyaData = retryResult.data;
+      karyaError = retryResult.error;
+    }
 
     if (karyaError || !karyaData) {
       throw new Error(karyaError?.message || 'Gagal menyimpan karya');
