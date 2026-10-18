@@ -112,6 +112,7 @@ export async function POST(req: NextRequest) {
     // Fallback otomatis jika kolom youtube_title belum ada di skema tabel Supabase
     if (karyaError && karyaError.message?.includes('youtube_title')) {
       delete insertPayload.youtube_title;
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       const retryResult = await (supabase.from('karya') as any)
         .insert(insertPayload)
         .select('id, slug')

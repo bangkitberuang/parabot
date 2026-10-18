@@ -109,6 +109,7 @@ export async function PUT(
     // Fallback otomatis jika kolom youtube_title belum ada di skema tabel Supabase
     if (updateError && updateError.message?.includes('youtube_title')) {
       delete updatePayload.youtube_title;
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       const retryResult = await (supabase.from('karya') as any)
         .update(updatePayload)
         .eq('id', id)
@@ -167,6 +168,10 @@ export async function DELETE(
       return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
     }
 
+    // Bersihkan data relasi terlebih dahulu agar penghapusan selalu berhasil
+    await supabase.from('karya_screenshot').delete().eq('karya_id', id);
+    await supabase.from('karya_unduhan').delete().eq('karya_id', id);
+
     const { error } = await supabase.from('karya').delete().eq('id', id);
 
     if (error) {
@@ -174,6 +179,8 @@ export async function DELETE(
     }
 
     revalidatePath('/', 'layout');
+    revalidatePath('/admin/karya', 'page');
+    revalidatePath('/admin', 'page');
 
     return NextResponse.json({ success: true });
   } catch (err: unknown) {

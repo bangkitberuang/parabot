@@ -99,9 +99,39 @@ export default function KaryaFormClient({
 
   const [teknoInput, setTeknoInput] = useState('');
   const [saving, setSaving] = useState(false);
+  const [deleting, setDeleting] = useState(false);
   const [uploadingImage, setUploadingImage] = useState(false);
   const [error, setError] = useState('');
   const [success, setSuccess] = useState(false);
+
+  const handleDeleteKarya = async () => {
+    if (!formData.id) return;
+    const confirmed = confirm(
+      `Apakah Anda yakin ingin menghapus karya "${formData.nama}"?\n\nTindakan ini bersifat permanen dan akan menghapus seluruh data, tangkapan layar, serta tautan unduhan terkait dari sistem.`
+    );
+    if (!confirmed) return;
+
+    setDeleting(true);
+    setError('');
+
+    try {
+      const res = await fetch(`/api/admin/karya/${formData.id}`, {
+        method: 'DELETE',
+      });
+      const json = await res.json();
+      if (!res.ok) {
+        throw new Error(json.error || 'Gagal menghapus karya');
+      }
+
+      router.push('/admin/karya');
+      router.refresh();
+    } catch (err: unknown) {
+      const msg = err instanceof Error ? err.message : 'Gagal menghapus karya';
+      setError(msg);
+    } finally {
+      setDeleting(false);
+    }
+  };
 
   // State Manajemen Kategori Interaktif
   const [kategoriState, setKategoriState] = useState<KategoriOption[]>(kategoriList);
@@ -283,6 +313,22 @@ export default function KaryaFormClient({
         </div>
 
         <div className="flex items-center gap-3">
+          {isEdit && (
+            <button
+              type="button"
+              onClick={handleDeleteKarya}
+              disabled={deleting || saving}
+              title="Hapus karya ini secara permanen"
+              className="inline-flex items-center gap-1.5 px-4 py-2.5 rounded-xl border border-rose-200 bg-rose-50 hover:bg-rose-100 text-rose-600 text-xs font-bold transition disabled:opacity-50"
+            >
+              {deleting ? (
+                <Loader2 className="w-4 h-4 animate-spin" />
+              ) : (
+                <Trash2 className="w-4 h-4" />
+              )}
+              <span>Hapus Karya</span>
+            </button>
+          )}
           <Link
             href="/admin/karya"
             className="px-4 py-2.5 rounded-xl border border-slate-200 bg-white hover:bg-slate-50 text-xs font-bold text-slate-700 transition"
@@ -291,7 +337,7 @@ export default function KaryaFormClient({
           </Link>
           <button
             type="submit"
-            disabled={saving}
+            disabled={saving || deleting}
             className="inline-flex items-center gap-2 px-6 py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-bold shadow-md shadow-emerald-600/20 transition disabled:opacity-50"
           >
             {saving ? (
@@ -807,6 +853,41 @@ export default function KaryaFormClient({
           </div>
         </div>
       </div>
+
+      {/* Zona Bahaya - Khusus Mode Edit */}
+      {isEdit && (
+        <div className="rounded-2xl border border-rose-200 bg-rose-50/50 p-6 space-y-3">
+          <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+            <div>
+              <h3 className="text-sm font-black text-rose-900 flex items-center gap-2">
+                <Trash2 className="w-4 h-4 text-rose-600" />
+                <span>Zona Bahaya: Hapus Karya</span>
+              </h3>
+              <p className="text-xs text-rose-700/80 mt-1 max-w-xl">
+                Menghapus karya <strong>{formData.nama}</strong> akan memusnahkan seluruh informasi, data tangkapan layar, dan link unduhan secara permanen dari basis data PARABOT. Tindakan ini tidak dapat dibatalkan.
+              </p>
+            </div>
+            <button
+              type="button"
+              onClick={handleDeleteKarya}
+              disabled={deleting || saving}
+              className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-rose-600 hover:bg-rose-700 text-white text-xs font-bold shadow-md shadow-rose-600/20 transition disabled:opacity-50 flex-shrink-0"
+            >
+              {deleting ? (
+                <>
+                  <Loader2 className="w-4 h-4 animate-spin" />
+                  <span>Menghapus...</span>
+                </>
+              ) : (
+                <>
+                  <Trash2 className="w-4 h-4" />
+                  <span>Hapus Karya Secara Permanen</span>
+                </>
+              )}
+            </button>
+          </div>
+        </div>
+      )}
     </form>
   );
 }

@@ -1,6 +1,5 @@
 import React from 'react';
 import Link from 'next/link';
-import { Code2 } from 'lucide-react';
 
 interface FooterProps {
   brandName?: string;
