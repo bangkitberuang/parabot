@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="256" height="256">
+  <defs>
+    <linearGradient id="sawalaGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#312E81" />
+      <stop offset="50%" stop-color="#4338CA" />
+      <stop offset="100%" stop-color="#6366F1" />
+    </linearGradient>
+    <linearGradient id="sawalaAccent" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#A5B4FC" />
+      <stop offset="100%" stop-color="#818CF8" />
+    </linearGradient>
+    <filter id="shadowSawala" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="6" stdDeviation="8" flood-color="#000000" flood-opacity="0.25"/>
+    </filter>
+  </defs>
+
+  <rect x="8" y="8" width="240" height="240" rx="54" fill="url(#sawalaGrad)" stroke="#818CF8" stroke-width="4" stroke-opacity="0.4" filter="url(#shadowSawala)" />
+  <rect x="14" y="14" width="228" height="228" rx="48" fill="none" stroke="#FFFFFF" stroke-width="1.5" stroke-opacity="0.15" />
+
+  <!-- Chat / Public Aspirations Speech Bubble with Sentiment Soundwave -->
+  <g transform="translate(56, 44)">
+    <!-- Main Bubble -->
+    <path d="M12 10 C12 4.477 16.477 0 22 0 L122 0 C127.523 0 132 4.477 132 10 L132 78 C132 83.523 127.523 88 122 88 L52 88 L24 108 L28 88 L22 88 C16.477 88 12 83.523 12 78 Z" fill="#FFFFFF" fill-opacity="0.15" stroke="url(#sawalaAccent)" stroke-width="3"/>
+    
+    <!-- Soundwave / Sentiment Bars inside -->
+    <rect x="36" y="34" width="8" height="24" rx="4" fill="#A5B4FC"/>
+    <rect x="52" y="24" width="8" height="44" rx="4" fill="#C7D2FE"/>
+    <rect x="68" y="16" width="8" height="60" rx="4" fill="#FFFFFF"/>
+    <rect x="84" y="28" width="8" height="36" rx="4" fill="#C7D2FE"/>
+    <rect x="100" y="38" width="8" height="16" rx="4" fill="#A5B4FC"/>
+
+    <!-- Small Heart Accent for Aspirasi / Warga -->
+    <circle cx="118" cy="18" r="10" fill="#EC4899"/>
+    <path d="M114 17 C114 15 116 13 118 15 C120 13 122 15 122 17 C122 19 118 22 118 22 C118 22 114 19 114 17 Z" fill="#FFFFFF"/>
+  </g>
+
+  <text x="128" y="194" font-family="system-ui, -apple-system, sans-serif" font-size="28" font-weight="900" fill="#FFFFFF" text-anchor="middle" letter-spacing="3">SAWALA</text>
+  <text x="128" y="216" font-family="system-ui, -apple-system, sans-serif" font-size="11" font-weight="700" fill="#C7D2FE" text-anchor="middle" letter-spacing="1">SENTIMEN WARGA</text>
+</svg>

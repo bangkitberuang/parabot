@@ -25,6 +25,7 @@ export default async function AdminKaryaPage() {
       unggulan,
       urutan,
       diperbarui_pada,
+      ikon_url,
       kategori:kategori_id (nama)
     `)
     .order('urutan', { ascending: true });

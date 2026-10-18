@@ -49,6 +49,7 @@ interface KaryaFormData {
   tingkat_kesulitan: string;
   estimasi_waktu: string;
   teknologi: string[];
+  ikon_url?: string;
   screenshots: ScreenshotItem[];
 }
 
@@ -94,6 +95,7 @@ export default function KaryaFormClient({
     tingkat_kesulitan: initialData?.tingkat_kesulitan || 'Menengah',
     estimasi_waktu: initialData?.estimasi_waktu || '1-2 jam',
     teknologi: initialData?.teknologi || ['Next.js', 'Tailwind CSS', 'TypeScript'],
+    ikon_url: initialData?.ikon_url || '',
     screenshots: initialData?.screenshots || [],
   });
 
@@ -101,8 +103,44 @@ export default function KaryaFormClient({
   const [saving, setSaving] = useState(false);
   const [deleting, setDeleting] = useState(false);
   const [uploadingImage, setUploadingImage] = useState(false);
+  const [uploadingLogo, setUploadingLogo] = useState(false);
   const [error, setError] = useState('');
   const [success, setSuccess] = useState(false);
+
+  const handleLogoUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (!file) return;
+
+    setUploadingLogo(true);
+    setError('');
+
+    try {
+      const data = new FormData();
+      data.append('file', file);
+      data.append('folder', 'karya-logo');
+
+      const res = await fetch('/api/admin/upload', {
+        method: 'POST',
+        body: data,
+      });
+
+      const json = await res.json();
+      if (!res.ok) {
+        throw new Error(json.error || `Gagal mengunggah logo ${file.name}`);
+      }
+
+      setFormData((prev) => ({
+        ...prev,
+        ikon_url: json.url as string,
+      }));
+    } catch (err: unknown) {
+      const msg = err instanceof Error ? err.message : 'Gagal mengunggah logo';
+      setError(msg);
+    } finally {
+      setUploadingLogo(false);
+      e.target.value = '';
+    }
+  };
 
   const handleDeleteKarya = async () => {
     if (!formData.id) return;
@@ -470,6 +508,110 @@ export default function KaryaFormClient({
                 placeholder="Langkah-langkah untuk mencoba atau menginstal aplikasi..."
                 className="w-full px-4 py-2.5 rounded-xl border border-slate-200 text-xs leading-relaxed focus:ring-2 focus:ring-emerald-500 focus:outline-none"
               />
+            </div>
+          </div>
+
+          {/* Card: Logo / Ikon Resmi Karya (Rasio 1:1 Persegi Seragam) */}
+          <div className="bg-white rounded-2xl border border-slate-200 p-6 sm:p-7 shadow-sm space-y-5">
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 pb-3 border-b border-slate-100">
+              <div>
+                <h2 className="text-sm font-bold uppercase tracking-wider text-slate-900 flex items-center gap-2">
+                  <ImageIcon className="w-4 h-4 text-emerald-600" />
+                  <span>Logo &amp; Ikon Resmi Karya (Rasio 1:1 Persegi)</span>
+                </h2>
+                <p className="text-[11px] text-slate-400 mt-0.5">
+                  Digunakan seragam pada Logo Carousel di atas footer dan bagian header Detail Karya.
+                </p>
+              </div>
+
+              {formData.ikon_url && (
+                <button
+                  type="button"
+                  onClick={() => handleChange('ikon_url', '')}
+                  className="text-xs font-bold text-rose-600 hover:text-rose-700 inline-flex items-center gap-1 self-start sm:self-auto transition"
+                >
+                  <Trash2 className="w-3.5 h-3.5" />
+                  <span>Hapus Logo</span>
+                </button>
+              )}
+            </div>
+
+            <div className="flex flex-col sm:flex-row items-center sm:items-start gap-6 p-4 rounded-2xl bg-slate-50/80 border border-slate-200/80">
+              {/* Wadah Pratinjau Squircle 1:1 Sesuai Contoh Format Logo */}
+              <div className="relative w-28 h-28 sm:w-32 sm:h-32 rounded-2xl bg-white border-2 border-slate-200 shadow-md p-1.5 flex items-center justify-center overflow-hidden flex-shrink-0 group">
+                {formData.ikon_url ? (
+                  // eslint-disable-next-line @next/next/no-img-element
+                  <img
+                    src={formData.ikon_url}
+                    alt="Pratinjau Logo Karya"
+                    className="w-full h-full object-contain rounded-xl"
+                  />
+                ) : (
+                  <div className="flex flex-col items-center justify-center text-slate-400 p-2 text-center">
+                    <ImageIcon className="w-8 h-8 text-slate-300 mb-1" />
+                    <span className="text-[10px] font-bold text-slate-400">Belum Ada Logo</span>
+                  </div>
+                )}
+              </div>
+
+              {/* Kontrol Upload & URL Input */}
+              <div className="flex-1 w-full space-y-3.5">
+                <div>
+                  <label className="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1.5">
+                    Unggah Berkas Gambar Logo
+                  </label>
+                  <label className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-bold cursor-pointer transition shadow-sm">
+                    {uploadingLogo ? (
+                      <>
+                        <Loader2 className="w-4 h-4 animate-spin" />
+                        <span>Mengunggah Logo...</span>
+                      </>
+                    ) : (
+                      <>
+                        <UploadCloud className="w-4 h-4" />
+                        <span>Pilih Berkas Logo dari Komputer</span>
+                      </>
+                    )}
+                    <input
+                      type="file"
+                      accept="image/png,image/jpeg,image/jpg,image/webp,image/svg+xml"
+                      disabled={uploadingLogo}
+                      onChange={handleLogoUpload}
+                      className="hidden"
+                    />
+                  </label>
+                  <span className="block text-[11px] text-slate-400 mt-1">
+                    Format didukung: PNG, JPG, WEBP, SVG (Maks. 5 MB). Disarankan rasio 1:1 membulat.
+                  </span>
+                </div>
+
+                <div>
+                  <label className="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1">
+                    Atau Masukkan Tautan / Path Logo
+                  </label>
+                  <div className="flex items-center gap-2">
+                    <input
+                      type="text"
+                      value={formData.ikon_url || ''}
+                      onChange={(e) => handleChange('ikon_url', e.target.value)}
+                      placeholder="Contoh: /icons/karsa.svg atau https://domain.com/logo.png"
+                      className="flex-1 px-3.5 py-2 rounded-xl border border-slate-200 text-xs focus:ring-2 focus:ring-emerald-500 focus:outline-none font-mono"
+                    />
+                    <button
+                      type="button"
+                      onClick={() => handleChange('ikon_url', '/logo.png')}
+                      className="px-3 py-2 rounded-xl border border-slate-200 bg-white hover:bg-slate-50 text-[11px] font-bold text-slate-600 transition flex-shrink-0"
+                      title="Gunakan contoh logo PARABOT"
+                    >
+                      Gunakan /logo.png
+                    </button>
+                  </div>
+                </div>
+
+                <div className="p-3 rounded-xl bg-emerald-50/60 border border-emerald-200/70 text-[11px] text-emerald-800 leading-relaxed">
+                  💡 <strong>Keseragaman Desain</strong>: Seluruh logo karya disarankan berformat persegi 1:1 dengan sudut membulat (seperti maskot resmi PARABOT). Hal ini memastikan tampilan logo di carousel halaman utama dan header detail karya selalu konsisten dan rapi.
+                </div>
+              </div>
             </div>
           </div>
 

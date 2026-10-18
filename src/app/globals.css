@@ -102,3 +102,33 @@
   border-top: 1px solid #e2e8f0;
   margin: 2em 0;
 }
+
+/* ==========================================================================
+   LOGO CAROUSEL / INFINITE MARQUEE ANIMATION
+   ========================================================================== */
+@keyframes logoMarquee {
+  0% {
+    transform: translate3d(0, 0, 0);
+  }
+  100% {
+    transform: translate3d(-50%, 0, 0);
+  }
+}
+
+.animate-marquee-infinite {
+  display: flex;
+  width: max-content;
+  will-change: transform;
+  animation: logoMarquee 38s linear infinite;
+}
+
+.animate-marquee-infinite:hover {
+  animation-play-state: paused;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-marquee-infinite {
+    animation: none;
+    overflow-x: auto;
+  }
+}

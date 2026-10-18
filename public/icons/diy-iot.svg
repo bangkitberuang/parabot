@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="256" height="256">
+  <defs>
+    <linearGradient id="iotGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0F172A" />
+      <stop offset="50%" stop-color="#1E293B" />
+      <stop offset="100%" stop-color="#0F766E" />
+    </linearGradient>
+    <linearGradient id="emeraldIoT" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#34D399" />
+      <stop offset="100%" stop-color="#10B981" />
+    </linearGradient>
+    <filter id="shadowIoT" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="6" stdDeviation="8" flood-color="#000000" flood-opacity="0.25"/>
+    </filter>
+  </defs>
+
+  <rect x="8" y="8" width="240" height="240" rx="54" fill="url(#iotGrad)" stroke="#10B981" stroke-width="4" stroke-opacity="0.4" filter="url(#shadowIoT)" />
+  <rect x="14" y="14" width="228" height="228" rx="48" fill="none" stroke="#FFFFFF" stroke-width="1.5" stroke-opacity="0.15" />
+
+  <!-- Microchip, Sensor & WiFi Waves -->
+  <g transform="translate(68, 40)">
+    <!-- Central Chip -->
+    <rect x="30" y="24" width="60" height="60" rx="12" fill="url(#emeraldIoT)" stroke="#FFFFFF" stroke-width="2.5"/>
+    <!-- Chip Center Core -->
+    <rect x="42" y="36" width="36" height="36" rx="6" fill="#0F172A"/>
+    <!-- Temp / Pulse Icon -->
+    <path d="M52 54 L56 50 L62 58 L68 44" fill="none" stroke="#34D399" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+
+    <!-- Chip Pins Left -->
+    <line x1="16" y1="36" x2="30" y2="36" stroke="#94A3B8" stroke-width="3" stroke-linecap="round"/>
+    <line x1="16" y1="54" x2="30" y2="54" stroke="#94A3B8" stroke-width="3" stroke-linecap="round"/>
+    <line x1="16" y1="72" x2="30" y2="72" stroke="#94A3B8" stroke-width="3" stroke-linecap="round"/>
+
+    <!-- Chip Pins Right -->
+    <line x1="90" y1="36" x2="104" y2="36" stroke="#94A3B8" stroke-width="3" stroke-linecap="round"/>
+    <line x1="90" y1="54" x2="104" y2="54" stroke="#94A3B8" stroke-width="3" stroke-linecap="round"/>
+    <line x1="90" y1="72" x2="104" y2="72" stroke="#94A3B8" stroke-width="3" stroke-linecap="round"/>
+
+    <!-- WiFi Signal Waves on Top -->
+    <path d="M42 14 C52 4 68 4 78 14" fill="none" stroke="#34D399" stroke-width="3" stroke-linecap="round"/>
+    <path d="M50 20 C56 14 64 14 70 20" fill="none" stroke="#6EE7B7" stroke-width="2.5" stroke-linecap="round"/>
+    <circle cx="60" cy="24" r="2" fill="#FFFFFF"/>
+  </g>
+
+  <text x="128" y="194" font-family="system-ui, -apple-system, sans-serif" font-size="26" font-weight="900" fill="#FFFFFF" text-anchor="middle" letter-spacing="2">MONITOR IOT</text>
+  <text x="128" y="216" font-family="system-ui, -apple-system, sans-serif" font-size="11" font-weight="700" fill="#6EE7B7" text-anchor="middle" letter-spacing="1">SENSOR SERVER MANDIRI</text>
+</svg>

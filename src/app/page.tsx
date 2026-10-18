@@ -7,6 +7,7 @@ import {
 } from '@/lib/data/publik';
 import Navbar from '@/components/publik/Navbar';
 import Footer from '@/components/publik/Footer';
+import LogoCarousel from '@/components/publik/LogoCarousel';
 import KatalogSection from '@/components/publik/KatalogSection';
 import DeviceMockup from '@/components/publik/DeviceMockup';
 import {
@@ -226,6 +227,13 @@ export default async function HomePage() {
       </section>
 
 
+
+      {/* Logo Carousel Ekosistem Karya di Atas Footer */}
+      <LogoCarousel
+        karyaList={karyaList}
+        judul="Ekosistem Karya & Solusi Digital"
+        subjudul="Koleksi logo dan tautan cepat ke seluruh aplikasi mandiri yang dirancang untuk mendukung operasional kerja sehari-hari."
+      />
 
       {/* Footer Nuansa Hijau Tua dengan Latar Dinamis */}
       <Footer

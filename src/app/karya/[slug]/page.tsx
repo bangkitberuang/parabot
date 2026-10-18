@@ -10,6 +10,7 @@ import {
 } from '@/lib/data/publik';
 import Navbar from '@/components/publik/Navbar';
 import Footer from '@/components/publik/Footer';
+import LogoCarousel from '@/components/publik/LogoCarousel';
 import { renderMarkdown, stripMarkdown, isMeaningfulContent } from '@/lib/utils/markdown';
 import { getDrivePreviewUrl } from '@/lib/utils/drive';
 import {
@@ -184,18 +185,26 @@ export default async function KaryaDetailPage({ params }: KaryaPageProps) {
                   </span>
                 </div>
 
-                <div className="flex flex-col md:flex-row md:items-center gap-2 md:gap-5">
-                  <h1 className="text-3xl sm:text-5xl font-black text-white tracking-tight drop-shadow-sm">
-                    {karya.nama}
-                  </h1>
-                  {karya.tagline && (
-                    <>
-                      <div className="hidden md:block w-px h-8 bg-emerald-500/40"></div>
-                      <p className="text-emerald-100/90 text-base sm:text-lg max-w-2xl leading-relaxed">
+                <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4 sm:gap-6 my-2">
+                  <div className="w-20 h-20 sm:w-24 sm:h-24 rounded-2xl bg-white/10 border border-white/20 p-2 flex items-center justify-center flex-shrink-0 shadow-xl backdrop-blur-md overflow-hidden">
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img
+                      src={karya.ikon_url || '/logo.png'}
+                      alt={`Logo ${karya.nama}`}
+                      className="w-full h-full object-contain rounded-xl"
+                    />
+                  </div>
+
+                  <div className="flex-1 min-w-0">
+                    <h1 className="text-3xl sm:text-4xl lg:text-5xl font-black text-white tracking-tight drop-shadow-sm">
+                      {karya.nama}
+                    </h1>
+                    {karya.tagline && (
+                      <p className="text-emerald-100/90 text-sm sm:text-base lg:text-lg max-w-2xl leading-relaxed mt-1">
                         {karya.tagline}
                       </p>
-                    </>
-                  )}
+                    )}
+                  </div>
                 </div>
 
                 {/* Tombol Bagikan Cepat */}
@@ -593,6 +602,13 @@ export default async function KaryaDetailPage({ params }: KaryaPageProps) {
           ) : null}
         </div>
       </div>
+
+      {/* Logo Carousel Ekosistem Karya di Atas Footer */}
+      <LogoCarousel
+        karyaList={allKaryaList}
+        judul="Ekosistem Karya Lainnya"
+        subjudul="Jelajahi portofolio aplikasi dan inovasi mandiri lainnya di etalase PARABOT."
+      />
 
       <Footer
         brandName={pengaturan.nama_brand as string}

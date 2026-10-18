@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="256" height="256">
+  <defs>
+    <linearGradient id="micGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#78350F" />
+      <stop offset="50%" stop-color="#B45309" />
+      <stop offset="100%" stop-color="#D97706" />
+    </linearGradient>
+    <linearGradient id="amberAccent" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FDE68A" />
+      <stop offset="100%" stop-color="#F59E0B" />
+    </linearGradient>
+    <filter id="shadowMic" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="6" stdDeviation="8" flood-color="#000000" flood-opacity="0.25"/>
+    </filter>
+  </defs>
+
+  <rect x="8" y="8" width="240" height="240" rx="54" fill="url(#micGrad)" stroke="#F59E0B" stroke-width="4" stroke-opacity="0.4" filter="url(#shadowMic)" />
+  <rect x="14" y="14" width="228" height="228" rx="48" fill="none" stroke="#FFFFFF" stroke-width="1.5" stroke-opacity="0.15" />
+
+  <!-- Microphone & AI transcription icon -->
+  <g transform="translate(68, 36)">
+    <!-- Mic Body -->
+    <rect x="36" y="8" width="48" height="74" rx="24" fill="url(#amberAccent)" stroke="#FFFFFF" stroke-width="2.5"/>
+    <!-- Mic Grid Lines -->
+    <line x1="44" y1="28" x2="76" y2="28" stroke="#78350F" stroke-width="2" stroke-linecap="round"/>
+    <line x1="42" y1="42" x2="78" y2="42" stroke="#78350F" stroke-width="2" stroke-linecap="round"/>
+    <line x1="46" y1="56" x2="74" y2="56" stroke="#78350F" stroke-width="2" stroke-linecap="round"/>
+
+    <!-- Arc Stand -->
+    <path d="M22 46 C22 84 98 84 98 46" fill="none" stroke="#FEF3C7" stroke-width="4" stroke-linecap="round"/>
+    <line x1="60" y1="84" x2="60" y2="106" stroke="#FEF3C7" stroke-width="4" stroke-linecap="round"/>
+    <line x1="38" y1="106" x2="82" y2="106" stroke="#FEF3C7" stroke-width="4" stroke-linecap="round"/>
+
+    <!-- Audio Waves Left & Right -->
+    <path d="M10 36 C4 48 4 56 10 68" fill="none" stroke="#FDE68A" stroke-width="3" stroke-linecap="round"/>
+    <path d="M110 36 C116 48 116 56 110 68" fill="none" stroke="#FDE68A" stroke-width="3" stroke-linecap="round"/>
+  </g>
+
+  <text x="128" y="194" font-family="system-ui, -apple-system, sans-serif" font-size="26" font-weight="900" fill="#FFFFFF" text-anchor="middle" letter-spacing="2">NOTULENSI AI</text>
+  <text x="128" y="216" font-family="system-ui, -apple-system, sans-serif" font-size="11" font-weight="700" fill="#FEF3C7" text-anchor="middle" letter-spacing="1">PROYEK REKAYASA DIY</text>
+</svg>

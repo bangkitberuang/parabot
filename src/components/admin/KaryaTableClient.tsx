@@ -27,6 +27,7 @@ export interface KaryaRow {
   unggulan: boolean;
   urutan: number;
   diperbarui_pada: string;
+  ikon_url?: string | null;
   kategori?: { nama: string } | null;
 }
 
@@ -231,8 +232,26 @@ export default function KaryaTableClient({ initialList }: KaryaTableClientProps)
                       #{item.urutan}
                     </td>
                     <td className="py-4 px-6">
-                      <div className="font-bold text-slate-900 text-sm">{item.nama}</div>
-                      <div className="text-[11px] font-mono text-slate-400">/karya/{item.slug}</div>
+                      <div className="flex items-center gap-3">
+                        <div className="w-10 h-10 rounded-xl bg-slate-100 border border-slate-200/80 p-1 flex items-center justify-center flex-shrink-0 overflow-hidden shadow-2xs">
+                          {item.ikon_url ? (
+                            // eslint-disable-next-line @next/next/no-img-element
+                            <img
+                              src={item.ikon_url}
+                              alt={item.nama}
+                              className="w-full h-full object-contain rounded-lg"
+                            />
+                          ) : (
+                            <span className="font-black text-slate-400 text-[11px]">
+                              {item.nama.slice(0, 2).toUpperCase()}
+                            </span>
+                          )}
+                        </div>
+                        <div>
+                          <div className="font-bold text-slate-900 text-sm">{item.nama}</div>
+                          <div className="text-[11px] font-mono text-slate-400">/karya/{item.slug}</div>
+                        </div>
+                      </div>
                     </td>
                     <td className="py-4 px-6">
                       <span className="inline-block px-2.5 py-1 rounded-md text-[10px] font-bold uppercase tracking-wider bg-slate-100 text-slate-700">

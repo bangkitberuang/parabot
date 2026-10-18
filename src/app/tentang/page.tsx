@@ -9,6 +9,7 @@ import {
 } from '@/lib/data/publik';
 import Navbar from '@/components/publik/Navbar';
 import Footer from '@/components/publik/Footer';
+import LogoCarousel from '@/components/publik/LogoCarousel';
 import { renderMarkdown } from '@/lib/utils/markdown';
 import { Mail, Briefcase, ChevronRight, User } from 'lucide-react';
 
@@ -163,6 +164,13 @@ export default async function TentangPage() {
           </div>
         </main>
       </div>
+
+      {/* Logo Carousel Ekosistem Karya di Atas Footer */}
+      <LogoCarousel
+        karyaList={karyaList}
+        judul="Ekosistem Karya & Solusi Digital"
+        subjudul="Koleksi logo dan tautan cepat ke seluruh aplikasi mandiri yang dirancang untuk mendukung operasional kerja sehari-hari."
+      />
 
       <Footer
         brandName={(pengaturan.nama_brand as string) || 'PARABOT'}

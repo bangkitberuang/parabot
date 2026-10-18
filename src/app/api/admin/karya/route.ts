@@ -67,6 +67,7 @@ export async function POST(req: NextRequest) {
       tingkat_kesulitan,
       estimasi_waktu,
       teknologi,
+      ikon_url,
       screenshots,
     } = body;
 
@@ -94,6 +95,7 @@ export async function POST(req: NextRequest) {
       youtube_url: youtube_url || null,
       versi: versi || 'v1.0.0',
       platform: platform || null,
+      ikon_url: ikon_url || null,
       status: status || 'published',
       unggulan: Boolean(unggulan),
       urutan: typeof urutan === 'number' ? urutan : 0,
